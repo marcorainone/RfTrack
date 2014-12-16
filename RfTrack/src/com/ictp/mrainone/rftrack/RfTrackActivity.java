@@ -238,6 +238,8 @@ public class RfTrackActivity extends Activity
 	//---------------------------------------
 	// the RF Explorer RF spectrum analyzer uses 2 baudrates: 500000 (default) and 2400.
 	// Verify and set the correct baudrate using the menu instrument.
+	// Note: transmission with baud rate from 500k has been tested even 
+	// in the virtual machine virtualbox used for debugging
 	//
 //	final int baudRate = 500000;			// two baudrates: 2400 or 500000
 	final int baudRate = 2400;				// two baudrates: 2400 or 500000
