@@ -241,8 +241,8 @@ public class RfTrackActivity extends Activity
 	// Note: transmission with baud rate from 500k has been tested even 
 	// in the virtual machine virtualbox used for debugging
 	//
-//	final int baudRate = 500000;			// two baudrates: 2400 or 500000
-	final int baudRate = 2400;				// two baudrates: 2400 or 500000
+	final int baudRate = 500000;			// two baudrates: 2400 or 500000
+//	final int baudRate = 2400;				// two baudrates: 2400 or 500000
 	
 	
 //============================================================
@@ -882,6 +882,10 @@ public class RfTrackActivity extends Activity
         {
             Start_Freq = 400000;	// 7 ASCII digits, decimal, KHZ, Value of frequency span start (lower)
             End_Freq = 500000;		// 7 ASCII digits, decimal, KHZ, Value of frequency span end (higher)
+			//---- dbg
+            // Start_Freq = 2400000;	// 7 ASCII digits, decimal, KHZ, Value of frequency span start (lower)
+            // End_Freq = 2500000;		// 7 ASCII digits, decimal, KHZ, Value of frequency span end (higher)
+			//-----
             Amp_Top = -50;			// 4 ASCII digits, decimal, dBm, Highest value of amplitude for GUI
             Amp_Bottom = -120;		// 4 ASCII digits, decimal, dBm, Lowest value of amplitude for GUI
         }
@@ -975,6 +979,7 @@ public class RfTrackActivity extends Activity
 
         // Recognize the configuration parameters RrTrack provided in the string.
 		// modify 10/07: the freq. limits are in Mhz
+		// MOdify 08/02/2015: the frequency limit is 6500 (4850-6100 frequency range for RFExplorer 6G model)
         public void strSetParam(String s)
         {
             // Integer: MAX, MIN VALUE
@@ -997,8 +1002,8 @@ public class RfTrackActivity extends Activity
                     // Incorrect frequency value is negative
                     if (tmp < 0)
                         tmp = -tmp;
-                    // Do not accept the value if the frequency is greater than or equal to 1000 (in MHz),
-                    if (tmp >= 1000)
+                    // Do not accept the value if the frequency is greater than or equal to 6500 (in MHz),
+                    if (tmp >= 6500)
                         break;
                     Start_Freq = tmp * 1000;	// Save the freq. in KHz
                     break;
@@ -1006,8 +1011,8 @@ public class RfTrackActivity extends Activity
                     // Incorrect frequency value is negative
                     if (tmp < 0)
                         tmp = -tmp;
-                    // Do not accept the value if the frequency is greater than or equal to 1000 (in MHz),
-                    if (tmp >= 1000)
+                    // Do not accept the value if the frequency is greater than or equal to 6500 (in MHz),
+                    if (tmp >= 6500)
                         break;
                     End_Freq = tmp * 1000;		// Save the freq. in KHz
                     break;
